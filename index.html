@@ -6,3 +6,138 @@
        </head>
       <img src="WebBanner2023.png" alt="Banner" width="1200" height="300">
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENG0018 Project: Wearable Technology in Sports</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+        header, section {
+            margin-bottom: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        ul {
+            list-style-type: none;
+        }
+        ul li {
+            margin-bottom: 10px;
+        }
+        a {
+            color: #3498db;
+        }
+        .banner {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .banner img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- University Banner -->
+    <div class="banner">
+        <img src="WebBanner2023.png" alt="University of Surrey Banner">
+    </div>
+
+    <!-- Header Section -->
+    <header>
+        <h1>The Role of Wearable Technology in Sports</h1>
+        <h2>Exploring Innovation, Injury Prevention, and Performance Enhancement</h2>
+        <p>Presented by Moeed Dewan, (6883630) ENG0018</p>
+    </header>
+
+    <!-- Abstract Section -->
+    <section id="abstract">
+        <h2>Abstract</h2>
+        <p>Wearable technology revolutionizes sports by providing real-time analytical insights into performance and injury prevention. This project explores its mechanisms, benefits, and challenges, highlighting its transformative role in modern sports.</p>
+    </section>
+
+    <!-- Article Section -->
+    <section id="article">
+        <h2>Article</h2>
+        <p>The full article explores how wearable technology aids in performance monitoring, injury prevention, and recovery optimization. It also delves into ethical concerns such as data privacy and accessibility challenges faced by non-professionals.</p>
+        <p><a href="Essay_6883630.pdf" download>Download the full article (PDF)</a>.</p>
+    </section>
+
+    <!-- Presentation Section -->
+    <section id="presentation">
+        <h2>Presentation</h2>
+        <p>A 5-minute recorded presentation summarizing the findings is available for download:</p>
+        <a href="6883630_WearableTechnologyPresentation.mp4" download>Download Presentation</a>
+    </section>
+
+    <!-- Timestamp Section -->
+    <section id="timestamp">
+        <h2>Last Update</h2>
+        <p id="last-updated">Loading last update time...</p>
+        <button onclick="verifyLastUpdatedTime()" style="display: block; margin: 10px auto; padding: 8px 16px;">
+            Verify Last Modified Time
+        </button>
+    </section>
+
+    <!-- References Section -->
+    <section id="references">
+        <h2>References</h2>
+        <ul>
+            <li>Rebelo, A. et al. (2023c). 'From data to action: A scoping review of wearable technologies and biomechanical assessments informing injury prevention strategies in sport.' <i>BMC Sports Science Medicine and Rehabilitation</i>, 15(1). Available at: <a href="https://doi.org/10.1186/s13102-023-00783-4">https://doi.org/10.1186/s13102-023-00783-4</a>.</li>
+            <li>Zadeh, A. et al. (2020b). 'Predicting Sports Injuries with Wearable Technology and Data Analysis.' <i>Information Systems Frontiers</i>, 23(4), pp. 1023–1037. Available at: <a href="https://doi.org/10.1007/s10796-020-10018-3">https://doi.org/10.1007/s10796-020-10018-3</a>.</li>
+            <li>Osborne, B. and Cunningham, J.L. (no date c). 'Legal and ethical implications of athletes’ biometric data collection in professional sport.' Available at: <a href="https://scholarship.law.marquette.edu/sportslaw/vol28/iss1/3/">https://scholarship.law.marquette.edu/sportslaw/vol28/iss1/3/</a>.</li>
+            <li>MacLean, E. (2020c). 'The case of tracking athletes’ every move: Biometrics in professional sports and the legal and ethical implications of data collection.' <i>SSRN Electronic Journal</i> [Preprint]. Available at: <a href="https://doi.org/10.2139/ssrn.3821995">https://doi.org/10.2139/ssrn.3821995</a>.</li>
+        </ul>
+    </section>
+
+    <!-- JavaScript -->
+    <script>
+        async function getLastUpdatedTime() {
+            const username = 'YOUR_USERNAME'; // Replace with GitHub username
+            const repo = 'YOUR_REPO_NAME';   // Replace with GitHub repository name
+            
+            const url = `https://api.github.com/repos/${username}/${repo}/commits`;
+            try {
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/vnd.github.v3+json',
+                    }
+                });
+                if (!response.ok) {
+                    throw new Error(`Error fetching data: ${response.status} - ${response.statusText}`);
+                }
+                const commits = await response.json();
+                if (commits && commits.length > 0) {
+                    const lastCommitDate = new Date(commits[0].commit.committer.date);
+                    document.getElementById('last-updated').innerText = `Last Modified Time: ${lastCommitDate.toLocaleString()}`;
+                } else {
+                    document.getElementById('last-updated').innerText = 'No commits found in the repository.';
+                }
+            } catch (error) {
+                console.error('Error fetching the last updated time:', error);
+                document.getElementById('last-updated').innerText = 'Error fetching update time. Please check the repository details.';
+            }
+        }
+
+        async function verifyLastUpdatedTime() {
+            document.getElementById('last-updated').innerText = 'Verifying...';
+            await getLastUpdatedTime();
+            alert("Last modified time successfully verified from GitHub API.");
+        }
+
+        window.onload = getLastUpdatedTime;
+    </script>
+</body>
+</html>
