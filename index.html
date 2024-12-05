@@ -1,212 +1,101 @@
 <!DOCTYPE html>
-
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ENG0018 Project: Wearable Technology in Sports</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 0;
-        }
-        header, section {
-            margin-bottom: 20px;
-        }
-        header {
-            text-align: center;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        h1, h2 {
-            color: #2c3e50;
-        }
-        ul {
-            list-style-type: none;
-        }
-        ul li {
-            margin-bottom: 10px;
-        }
-        a {
-            color: #3498db;
-        }
-        .banner {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .banner img {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
+    <title>My ENG0018 Project</title>
 </head>
 <body>
-    <!-- University Banner -->
-    <div class="banner">
-        <img src="WebBanner2023.png" alt="University of Surrey Banner">
-    </div>
+    <h1>Welcome to My ENG0018 Webpage</h1>
 
-    <!-- Header Section -->
-    <header>
-        <h1>The Role of Wearable Technology in Sports</h1>
-        <h2>Exploring Innovation, Injury Prevention, and Performance Enhancement</h2>
-        <p>Presented by Moeed Dewan, (6883630) ENG0018</p>
-    </header>
+    <!-- Table of Contents -->
+    <h2>Table of Contents</h2>
+    <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#purpose">The Purpose of Wearable Technology</a></li>
+        <li><a href="#applications">Real-World Applications</a></li>
+        <li><a href="#challenges">Challenges and Limitations</a></li>
+        <li><a href="#future">Future Bearings: Prevention</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+    </ul>
 
-    <!-- Abstract Section -->
-    <section id="abstract">
-        <h2>Abstract</h2>
-        <p>Wearable technology revolutionizes sports by providing real-time analytical insights into performance and injury prevention. This project explores its mechanisms, benefits, and challenges, highlighting its transformative role in modern sports.</p>
-    </section>
+    <!-- Introduction Section -->
+    <h2 id="introduction">Introduction</h2>
+    <p>This project explores the role of wearable technology in preventing sports injuries...</p>
 
-    <!-- Article Section -->
-    <section id="article">
-        <h2>Article</h2>
-        <p>The full article explores how wearable technology aids in performance monitoring, injury prevention, and recovery optimization. It also delves into ethical concerns such as data privacy and accessibility challenges faced by non-professionals.</p>
-        <p><a href="6883630_WearableTechnology-Article.pdf" download>Download the full article (PDF)</a>.</p>
-    </section>
+    <!-- Purpose Section -->
+    <h2 id="purpose">The Purpose of Wearable Technology</h2>
+    <p>Wearable technology is designed to enhance athletic performance and minimize risks...</p>
 
-    <!-- Presentation Section -->
-    <section id="presentation">
-        <h2>Presentation</h2>
-        <p>A 5-minute recorded presentation </p>
-        <video src="6883630_WearableTechnologyPresentation (1).mp4" width="800" height="450" controls>
-        </video>
-    
+    <!-- Applications Section -->
+    <h2 id="applications">Real-World Applications</h2>
+    <p>In professional sports, wearable technology is employed to monitor performance metrics...</p>
 
-    <!-- Timestamp Section -->
- <!-- Last commit time display -->
-<div id="last-updated">Loading last update time...</div>
-<!-- Verify Button -->
-<button onclick="verifyLastUpdatedTime()" style="display: block; margin: 10px auto; padding: 8px 16px;">
-    Verify Last Modified Time
-</button>
-<script>
-    async function getLastUpdatedTime() {
-        const username = 'fepsfy6883630';
-        const repo = 'FY6883630';
-       
-        const url = `https://api.github.com/repos/${username}/${repo}/commits`;
-        try {
-            const response = await fetch(url, {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/vnd.github.v3+json',
-                }
-            });
-            if (!response.ok) {
-                throw new Error(`Error fetching data: ${response.status} - ${response.statusText}`);
-            }
-            const commits = await response.json();
-            if (commits && commits.length > 0) {
-                const lastCommitDate = new Date(commits[0].commit.committer.date);
-               
-                // Displaying the time on load
-                document.getElementById('last-updated').innerText = `Last Modified Time: ${lastCommitDate.toLocaleString()}`;
-            } else {
-                document.getElementById('last-updated').innerText = 'No commits found in the repository.';
-            }
-        } catch (error) {
-            console.error('Error fetching the last updated time:', error);
-            document.getElementById('last-updated').innerText = 'Error fetching update time. Please check the repository details.';
-        }
-    }
-    // Function to verify the last update time by re-fetching it from the API
-    async function verifyLastUpdatedTime() {
-        document.getElementById('last-updated').innerText = 'Verifying...';
-        await getLastUpdatedTime();
-        alert("Last modified time has been successfully verified from GitHub API.");
-    }
-    // Initial load to display the time on page load
-    window.onload = getLastUpdatedTime;
-</script>
+    <!-- Challenges Section -->
+    <h2 id="challenges">Challenges and Limitations</h2>
+    <p>Despite its benefits, wearable technology faces challenges such as cost and accessibility...</p>
 
+    <!-- Future Bearings Section -->
+    <h2 id="future">Future Bearings: Prevention</h2>
+    <p>The advancement of wearable technology shows promise in revolutionizing sports injury prevention...</p>
 
-<!-- Placeholder for total word count -->
-<p id="totalWordCount"></p>
-<hr>
-<script>
-  // Function to calculate and display word count for a specified section
-  function displayWordCount(sectionId, outputId) {
-    // Get the text content from the specified section
-    const text = document.getElementById(sectionId).textContent;
-    // Split text into words based on spaces and filter out any empty strings
-    const wordArray = text.trim().split(/\s+/);
-    // Count the words
-    const wordCount = wordArray.length;
-    // Return the word count for summing purposes
-    return wordCount;
-  }
-  // Function to calculate and display total word count from selected sections
-  function displayTotalWordCount() {
-    // Calculate word count for each section and accumulate the total
-    const IntroductionCount = displayWordCount("Introduction_InText");
-    const AnalysisCount = displayWordCount("Analysis_InText");
-    // Calculate the sum of all selected sections
-    const totalWordCount = IntroductionCount + AnalysisCount;
-    // Display the total word count
-    document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
-  }
-  // Run the function for specific sections and display total count when the page loads
-  window.onload = displayTotalWordCount;
-</script>
+    <!-- Conclusion Section -->
+    <h2 id="conclusion">Conclusion</h2>
+    <p>Wearable technology provides a foundation for injury prevention, athletic optimization, and long-term benefits...</p>
 
+    <!-- References -->
+    <h2>References</h2>
+    <ul>
+        <li>Rebelo, A. et al. (2023c)...</li>
+        <li>Zadeh, A. et al. (2020b)...</li>
+    </ul>
 
-    </section>
+    <!-- Downloadable Article -->
+    <h2>Article</h2>
+    <p><a href="article.pdf" download>Download the Full Article</a></p>
 
-    <!-- References Section -->
-    <section id="references">
-        <h2>References</h2>
-        <ul>
-            <li>Rebelo, A. et al. (2023c). 'From data to action: A scoping review of wearable technologies and biomechanical assessments informing injury prevention strategies in sport.' <i>BMC Sports Science Medicine and Rehabilitation</i>, 15(1). Available at: <a href="https://doi.org/10.1186/s13102-023-00783-4">https://doi.org/10.1186/s13102-023-00783-4</a>.</li>
-            <li>Zadeh, A. et al. (2020b). 'Predicting Sports Injuries with Wearable Technology and Data Analysis.' <i>Information Systems Frontiers</i>, 23(4), pp. 1023–1037. Available at: <a href="https://doi.org/10.1007/s10796-020-10018-3">https://doi.org/10.1007/s10796-020-10018-3</a>.</li>
-            <li>Osborne, B. and Cunningham, J.L. (no date c). 'Legal and ethical implications of athletes’ biometric data collection in professional sport.' Available at: <a href="https://scholarship.law.marquette.edu/sportslaw/vol28/iss1/3/">https://scholarship.law.marquette.edu/sportslaw/vol28/iss1/3/</a>.</li>
-            <li>MacLean, E. (2020c). 'The case of tracking athletes’ every move: Biometrics in professional sports and the legal and ethical implications of data collection.' <i>SSRN Electronic Journal</i> [Preprint]. Available at: <a href="https://doi.org/10.2139/ssrn.3821995">https://doi.org/10.2139/ssrn.3821995</a>.</li>
-        </ul>
-    </section>
+    <!-- Last Commit Time -->
+    <h2>Last Update</h2>
+    <div id="last-updated">Loading last update time...</div>
+    <button onclick="verifyLastUpdatedTime()" style="display: block; margin: 10px auto; padding: 8px 16px;">
+        Verify Last Modified Time
+    </button>
 
-    <!-- JavaScript -->
     <script>
         async function getLastUpdatedTime() {
-    const username = 'yourGitHubUsername'; // Replace with your GitHub username
-    const repo = 'yourRepositoryName';   // Replace with your repository name
-    const url = `https://api.github.com/repos/${username}/${repo}/commits`;
-
-    try {
-        const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/vnd.github.v3+json',
-                // 'Authorization': `token YOUR_PERSONAL_ACCESS_TOKEN` // Uncomment if using a token
+            const username = 'fepsfy6883630';
+            const repo = 'FY6883630';
+            
+            const url = `https://api.github.com/repos/${username}/${repo}/commits`;
+            try {
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/vnd.github.v3+json',
+                    }
+                });
+                if (!response.ok) {
+                    throw new Error(`Error fetching data: ${response.status} - ${response.statusText}`);
+                }
+                const commits = await response.json();
+                if (commits && commits.length > 0) {
+                    const lastCommitDate = new Date(commits[0].commit.committer.date);
+                    
+                    // Displaying the time on load
+                    document.getElementById('last-updated').innerText = `Last Modified Time: ${lastCommitDate.toLocaleString()}`;
+                } else {
+                    document.getElementById('last-updated').innerText = 'No commits found in the repository.';
+                }
+            } catch (error) {
+                console.error('Error fetching the last updated time:', error);
+                document.getElementById('last-updated').innerText = 'Error fetching update time. Please check the repository details.';
             }
-        });
-
-        if (!response.ok) {
-            throw new Error(`Error fetching data: ${response.status} - ${response.statusText}`);
         }
-
-        const commits = await response.json();
-        if (commits && commits.length > 0) {
-            const lastCommitDate = new Date(commits[0].commit.committer.date);
-            document.getElementById('last-updated').innerText = `Last Modified Time: ${lastCommitDate.toLocaleString()}`;
-        } else {
-            document.getElementById('last-updated').innerText = 'No commits found in the repository.';
+        async function verifyLastUpdatedTime() {
+            document.getElementById('last-updated').innerText = 'Verifying...';
+            await getLastUpdatedTime();
+            alert("Last modified time has been successfully verified from GitHub API.");
         }
-    } catch (error) {
-        console.error('Error fetching the last updated time:', error);
-        document.getElementById('last-updated').innerText = 'Error fetching update time. Please check the repository details.';
-    }
-}
-
-async function verifyLastUpdatedTime() {
-    document.getElementById('last-updated').innerText = 'Verifying...';
-    await getLastUpdatedTime();
-    alert("Last modified time successfully verified from GitHub API.");
-}
-
-window.onload = getLastUpdatedTime;
-
+        window.onload = getLastUpdatedTime;
     </script>
 </body>
 </html>
+
