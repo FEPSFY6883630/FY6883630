@@ -76,23 +76,14 @@
     
 
     <!-- Timestamp Section -->
-       <!-- Last commit time display -->
-<h2>Last Update</h2>
-<div id="last-updated">Loading last update time...</div>
-<!-- Verify Button -->
-<button onclick="verifyLastUpdatedTime()" style="display: block; margin: 10px auto; padding: 8px 16px;">
-    Verify Last Modified Time
-</button>
-
-<script>
-    // Fetch and display the last commit time from GitHub API
+ <script>
     async function getLastUpdatedTime() {
-        // Replace these with your actual username and repository name
         const username = 'fepsfy6883630'; // Your GitHub username
         const repo = 'FY6883630'; // Your repository name
         const url = `https://api.github.com/repos/${username}/${repo}/commits`;
 
         try {
+            console.log(`Fetching data from: ${url}`); // Log the API URL for debugging
             const response = await fetch(url, {
                 method: 'GET',
                 headers: {
@@ -105,10 +96,13 @@
             }
 
             const commits = await response.json();
+            console.log('Commits fetched:', commits); // Log the fetched commits for debugging
 
             if (commits && commits.length > 0) {
-                // Fetch the latest commit timestamp
                 const lastCommitDate = new Date(commits[0].commit.committer.date);
+                console.log('Last commit date:', lastCommitDate); // Log the parsed date for debugging
+
+                // Update the div with the last commit date
                 document.getElementById('last-updated').innerText = `Last Modified Time: ${lastCommitDate.toLocaleString()}`;
             } else {
                 document.getElementById('last-updated').innerText = 'No commits found in the repository.';
@@ -119,16 +113,15 @@
         }
     }
 
-    // Button to manually verify the last update time
     async function verifyLastUpdatedTime() {
         document.getElementById('last-updated').innerText = 'Verifying...';
         await getLastUpdatedTime();
-        alert("Last modified time has been successfully verified from GitHub API.");
+        alert("Last modified time successfully verified from GitHub API.");
     }
 
-    // Automatically load the last update time when the page loads
     window.onload = getLastUpdatedTime;
 </script>
+
 
 
     </section>
