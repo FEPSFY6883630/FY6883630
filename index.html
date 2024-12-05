@@ -221,45 +221,73 @@ imagination, that the only thing stopping its countless possibilities, is human 
         window.onload = getLastUpdatedTime;
     </script>
 
+        <!-- Word Count Section -->
+<div id="wordCountSection">
+    <h2>Word Count</h2>
+    <p id="totalWordCount">Loading total word count...</p>
+    <hr>
+</div>
 
-<!-- Placeholder for total word count -->
-<p id="totalWordCount"></p>
-        
-<hr>
-        
+<!-- Word Count Script -->
 <script>
   // Function to calculate and display word count for a specified section
-  function displayWordCount(sectionId, outputId) {
+  function displayWordCount(sectionId) {
     // Get the text content from the specified section
-    const text = document.getElementById(sectionId).textContent;
-      
+    const text = document.getElementById(sectionId)?.textContent || '';
     // Split text into words based on spaces and filter out any empty strings
-    const wordArray = text.trim().split(/\s+/);
-      
+    const wordArray = text.trim().split(/\s+/).filter(word => word.length > 0);
     // Count the words
-    const wordCount = wordArray.length;
-      
-    // Return the word count for summing purposes
-    return wordCount;
+    return wordArray.length;
   }
-  // Function to calculate and display total word count from selected sections
+
+  // Function to calculate and display total word count from all sections
   function displayTotalWordCount() {
-    // Calculate word count for each section and accumulate the total
-    const IntroductionCount = displayWordCount("Introduction_InText");
-    const The Purpose of Wearable TechnologyCount = displayWordCount("The Purpose of Wearable Technology_InText");
-    const Real-worldapplications = displayWordCount("Real-World Applications_InText");
-    const Challenges and LimitationsCount = displayWordCount("Challenges and Limitations_InText");  
-    const Future Bearings: PreventionCount = displayWordCount("Future Bearings: Prevention_InText");
-    const ConclusionCount = displayWordCount("Conclusion_InText");
-      
-    // Calculate the sum of all selected sections
-    const totalWordCount = IntroductionCount + The Purpose of Wearable TechnologyCount + Real-world ApplicationsCount + Challenges and LimitationsCount + Future Bearings:PreventionCount + ConclusionCount;
-      
+    // Calculate word count for each section
+    const introductionCount = displayWordCount("Introduction_InText");
+    const purposeCount = displayWordCount("Purpose_InText");
+    const applicationsCount = displayWordCount("Applications_InText");
+    const challengesCount = displayWordCount("Challenges_InText");
+    const futureCount = displayWordCount("Future_InText");
+    const conclusionCount = displayWordCount("Conclusion_InText");
+
+    // Calculate the total word count
+    const totalWordCount = introductionCount + purposeCount + applicationsCount + challengesCount + futureCount + conclusionCount;
+
     // Display the total word count
     document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
   }
-  // Run the function for specific sections and display total count when the page loads
-  window.onload = displayTotalWordCount;
+
+  // Run the function to calculate and display total word count when the page loads
+  window.onload = function () {
+    displayTotalWordCount();
+  };
 </script>
+
+<!-- Example Sections -->
+<div id="Introduction_InText">
+    <h3>Introduction</h3>
+    <p>Wearable technology in sports plays a vital role...</p>
+</div>
+<div id="Purpose_InText">
+    <h3>The Purpose of Wearable Technology</h3>
+    <p>The primary purpose of wearable technology is to monitor and optimize performance...</p>
+</div>
+<div id="Applications_InText">
+    <h3>Real-World Applications</h3>
+    <p>Real-world examples include tracking systems used in football and basketball...</p>
+</div>
+<div id="Challenges_InText">
+    <h3>Challenges and Limitations</h3>
+    <p>Challenges in adopting wearable technology include costs and data privacy concerns...</p>
+</div>
+<div id="Future_InText">
+    <h3>Future Bearings: Prevention</h3>
+    <p>Future developments aim to enhance the predictive capabilities of wearable devices...</p>
+</div>
+<div id="Conclusion_InText">
+    <h3>Conclusion</h3>
+    <p>In conclusion, wearable technology holds promise for improving sports safety...</p>
+</div>
+
 </body>
 </html>
